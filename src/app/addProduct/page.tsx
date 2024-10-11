@@ -1,5 +1,6 @@
 "use client"
-import React, { ReactElement } from 'react';
+import axios from 'axios';
+import React from 'react';
 
 const appProductPage = () => {
     const [product, setProduct] = React.useState({
@@ -8,11 +9,21 @@ const appProductPage = () => {
         price: "",
         ram: "",
         room: "",
-        lounchDate: ""
+        madeIn: ""
     })
     const handleAddProduct = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         console.log(product);
+        axios.post("http://localhost:3000/api/product", product)
+            .then(data => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+
+
 
     }
     return (
@@ -53,9 +64,9 @@ const appProductPage = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Lounch Date</span>
+                                <span className="label-text">Made In</span>
                             </label>
-                            <input type="date" onChange={(event) => setProduct({ ...product, lounchDate: event?.target.value })} placeholder="Lounch Date" className="input input-bordered" required />
+                            <input type="text" onChange={(event) => setProduct({ ...product, madeIn: event?.target.value })} placeholder="Made In" className="input input-bordered" required />
 
                         </div>
                         <div className="form-control mt-6 col-span-2">
