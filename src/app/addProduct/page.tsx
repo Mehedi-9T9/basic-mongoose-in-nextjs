@@ -9,14 +9,14 @@ const appProductPage = () => {
         price: "",
         ram: "",
         room: "",
-        madeIn: ""
+        productId: ""
     })
     const handleAddProduct = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log(product);
         axios.post("http://localhost:3000/api/product", product)
             .then(data => {
                 console.log(data);
+                console.log(product);
             })
             .catch((error) => {
                 console.log(error);
@@ -64,9 +64,9 @@ const appProductPage = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Made In</span>
+                                <span className="label-text">Product ID:</span>
                             </label>
-                            <input type="text" onChange={(event) => setProduct({ ...product, madeIn: event?.target.value })} placeholder="Made In" className="input input-bordered" required />
+                            <input type="text" onChange={(event) => setProduct({ ...product, productId: event?.target.value })} placeholder="Made In" className="input input-bordered" required />
 
                         </div>
                         <div className="form-control mt-6 col-span-2">

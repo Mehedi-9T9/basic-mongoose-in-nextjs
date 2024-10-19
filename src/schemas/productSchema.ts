@@ -21,9 +21,9 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    madeIn: {
-        type: String,
-        required: true
+
+    productId: {
+        type: String
     }
 
 })
