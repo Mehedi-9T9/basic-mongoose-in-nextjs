@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
+import Update from './Update';
+import Delete from './Delete';
 type productDemo = {
     productName: string,
     category: string,
@@ -22,7 +24,11 @@ const ProductCard = ({ product }: { product: productDemo }) => {
                     <p>{product.category}</p>
                 </div>
                 <h4 className='text-xl'>{product.madeIn}</h4>
+                <div className='flex justify-between'>
                 <Link href={`/products/${product.productId}`}><button type='button' className='btn bg-red-300'>Details</button></Link>
+                <Update id={product.productId} />
+                <Delete id={product.productId}></Delete>
+                </div>
 
 
             </div>

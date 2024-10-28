@@ -24,6 +24,10 @@ const productSchema = new mongoose.Schema({
 
     productId: {
         type: String
+    },
+    madeIn: {
+        type: String,
+        default: "Bangladesh"
     }
 
 })
